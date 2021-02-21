@@ -27,14 +27,31 @@ const patrons = [
   }
 ];
 
+const books = [
+  {
+    id: 0,
+    title: 'A Game of Thrones',
+    pageCount: 694,
+    genre: 'political fiction',
+    ISBN: '0-553-10354-7'
+  }
+]
+
 class App extends Component {
   state = {
-    patrons
+    patrons,
+    books
   }
 
   handleAddPatron = (newPatron) => {
     this.setState({
       patrons: [...this.state.patrons, newPatron ],
+    })
+  }
+
+  handleAddBook = (newBook) => {
+    this.setState({
+      books: [...this.state.books, newBook ],
     })
   }
 
@@ -61,7 +78,9 @@ class App extends Component {
   render() {
     const value = {
       patrons: this.state.patrons,
+      books: this.state.books,
       addPatron: this.handleAddPatron,
+      addBook: this.handleAddBook,
       error: this.state.error,      
     };
     return (

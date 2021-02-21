@@ -42,8 +42,8 @@ class AddPatron extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const first = this.state.first;
-    const last = this.state.last;
+    const first = this.state.first.value;
+    const last = this.state.last.value;
 
     const x = this.context.patrons.length - 1;
     const y = this.context.patrons[x].id + 1;

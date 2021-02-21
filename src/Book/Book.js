@@ -1,4 +1,5 @@
 import  React, {Component} from 'react';
+import AddBook from '../AddBook/AddBook';
 import './Book.css';
 
 class Book extends Component {
@@ -7,9 +8,7 @@ class Book extends Component {
     return (
       <>
         <h2>Book</h2>
-        <div className="editBook">
-          <p>Form for adding/editing library books</p>
-        </div>
+        <AddBook></AddBook>
         <br />        
         <div className="searchBook">
           <p>Query for searching Books</p>
