@@ -1,4 +1,5 @@
 import  React, {Component} from 'react';
+import AddPatron from '../AddPatron/AddPatron';
 import './Patron.css';
 
 class Patron extends Component {
@@ -6,10 +7,8 @@ class Patron extends Component {
   render() {  
     return (
       <>
-        <h2>Patron</h2>
-        <div className="editPatron">
-          <p>Form for adding/editing library patrons</p>
-        </div>
+        <h2>Patrons</h2>
+          <AddPatron></AddPatron>
         <br />        
         <div className="searchPatron">
           <p>Query for searching Patrons</p>
