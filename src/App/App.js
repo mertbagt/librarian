@@ -42,11 +42,15 @@ const books = [
   }
 ]
 
+const booksCheckedOut = []
+
 class App extends Component {
   state = {
     patrons,
     books,
-    results: [],
+    booksCheckedOut,
+    patronResults: [],
+    bookResults: [],
     currentPatron: [],
     error: "",
   }
@@ -63,15 +67,36 @@ class App extends Component {
     })
   }
 
+  handleCheckBookOut = (bookCheckedOut) => {
+    this.setState({
+      booksCheckedOut: [...this.state.booksCheckedOut, bookCheckedOut ],
+    })
+  }
+
+  handleCheckIn = (bookId) => {
+    console.log(bookId);
+    console.log(typeof(bookId))
+
+    this.setState({
+      booksCheckedOut: this.state.booksCheckedOut.filter(book => (book.bookId !== bookId))
+    })
+  }
+
   handleError = (newError) => {
     this.setState({
       error: newError
     })
   }
 
-  handleUpdateResults = (results) => {
+  handleUpdatePatronResults = (results) => {
     this.setState({
-      results: results
+      patronResults: results
+    })
+  }
+
+  handleUpdateBookResults = (results) => {
+    this.setState({
+      bookResults: results
     })
   }
 
@@ -86,6 +111,12 @@ class App extends Component {
       patrons: this.state.patrons.filter(patron => patron.id !== id)
     })
   }
+
+  handleDeleteBook = (id) => {
+    this.setState({
+      books: this.state.books.filter(book => book.id !== id)
+    })
+  }    
 
   renderNavRoutes() {
     return (
@@ -111,14 +142,20 @@ class App extends Component {
     const value = {
       patrons: this.state.patrons,
       books: this.state.books,
-      results: this.state.results,
+      booksCheckedOut: this.state.booksCheckedOut,
+      patronResults: this.state.patronResults,
+      bookResults: this.state.bookResults,
       currentPatron: this.state.currentPatron,
       addPatron: this.handleAddPatron,
       addBook: this.handleAddBook,
+      checkBook: this.handleCheckBookOut,
+      checkIn: this.handleCheckIn,
       updateError: this.handleError,
-      updateResults: this.handleUpdateResults,
+      updatePatronResults: this.handleUpdatePatronResults,
+      updateBookResults: this.handleUpdateBookResults,
       updateCurrentPatron: this.handleCurrentPatron,
       deletePatron: this.handleDeletePatron,
+      deleteBook: this.handleDeleteBook,
       error: this.state.error,      
     };
     return (

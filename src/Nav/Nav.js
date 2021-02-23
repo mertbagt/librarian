@@ -7,10 +7,12 @@ class Nav extends Component {
   static contextType = Context;
 
   handleReset = e => {
-    const results = [];
+    const patronResults = [];
+    const bookResults = [];
     const newError = [];
 
-    this.context.updateResults(results);
+    this.context.updatePatronResults(patronResults);
+    this.context.updateBookResults(bookResults);
     this.context.updateError(newError);
   }  
 

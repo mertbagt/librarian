@@ -24,20 +24,23 @@ class SelectPatron extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const currentPatron = [];
+    this.context.updateCurrentPatron(currentPatron);
+
     const first = this.state.first.value;
     const last = this.state.last.value;
 
     let results = this.context.patrons;
 
     if (first != '') {
-      results = results.filter(result => result.first === first)
+      results = results.filter(result => result.first.search(first) > -1)
     }
 
     if (last != '') {
-      results = results.filter(result => result.last === last)
+      results = results.filter(result => result.last.search(last) > -1)
     }
 
-    this.context.updateResults(results)
+    this.context.updatePatronResults(results)
 //    this.setState({results: results})
 
     let newError = "";
@@ -50,7 +53,17 @@ class SelectPatron extends Component {
   }
 
   render() {
-    const results = this.context.results;
+    const results = this.context.patronResults;
+    const resultPatron = (this.context.currentPatron.id > -1 && this.props.path !== "/patron")
+          ? ""
+          : <table id={"resultsTable"}>
+              <tbody>
+                {results.map((result, index) => 
+                  <ResultPatron key={index} subkey={index} path={this.props.path} id={result.id} first={result.first} last={result.last} />
+                )}
+              </tbody>
+            </table>;
+
     const currentPatron = (this.context.currentPatron && (this.props.path != "/patron"))
           ? <h3 className="currentPatron">
               Selected Patron: {this.context.currentPatron.first} {this.context.currentPatron.last}
@@ -93,18 +106,11 @@ class SelectPatron extends Component {
               <button
                 type="submit"
                 className="selectPatron_button"                
-              >Search
-              </button>  
+              >Search</button>  
             </div>
           </div>
         </form>
-        <table id={"resultsTable"}>
-          <tbody>
-            {results.map((result, index) => 
-              <ResultPatron key={index} subkey={index} path={this.props.path} id={result.id} first={result.first} last={result.last}></ResultPatron>
-            )}
-          </tbody>
-        </table>
+        {resultPatron}
       </section>
     );
   }  

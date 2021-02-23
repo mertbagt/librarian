@@ -1,5 +1,7 @@
 import  React, {Component} from 'react';
-import Context from '../Context'
+import Context from '../Context';
+import SelectPatron from '../SelectPatron/SelectPatron';
+import SelectCheckedOut from '../SelectCheckedOut/SelectCheckedOut';
 import './Checkin.css';
 
 class Checkin extends Component {
@@ -14,14 +16,12 @@ class Checkin extends Component {
       <>
         {error}
         <h2>Checkin</h2>
-        <div className="selectPatronIn">
-          <p>Form to select/search patron or all</p>
-        </div>
+        <SelectPatron />
         <br />        
         <div className="resultsCheckin">
-          <p>list books currently checked out by patron or all</p>
-          <p>&nbsp;&nbsp;&nbsp;button next to each entry to "checkin" returned books</p>
+          <h3>Books currently checked out by this patron</h3>
         </div>
+        <SelectCheckedOut />
       </>
     );
   }  

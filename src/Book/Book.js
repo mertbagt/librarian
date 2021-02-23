@@ -1,6 +1,8 @@
 import  React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import Context from '../Context'
 import AddBook from '../AddBook/AddBook';
+import SelectBook from '../SelectBook/SelectBook';
 import './Book.css';
 
 class Book extends Component {
@@ -18,14 +20,12 @@ class Book extends Component {
         <AddBook></AddBook>
         <br />        
         <div className="searchBook">
-          <p>Query for searching Books</p>
+          <p>Search / Delete Books</p>
         </div>
-        <div className="resultsBook">
-          <p>Query Results</p>
-        </div>
+        <SelectBook path={this.props.location.pathname}/>
       </>
     );
   }  
 }
 
-export default Book;
+export default withRouter(Book);
