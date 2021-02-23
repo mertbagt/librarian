@@ -33,19 +33,19 @@ class ResultPatron extends Component {
     if (this.props.path === "/patron") {
       if (this.context.booksCheckedOut.length > 0) {  
         let checkedOut = false; 
-        const check = this.context.booksCheckedOut.find(book => book.patronId === this.props.id)
+        const check = this.context.booksCheckedOut.find(book => book.patronId === this.props.id);
   
         if (check !== undefined) {
           checkedOut = (check.patronId > -1)
             ? true
-            : false        
+            : false;     
         } 
       
         if (checkedOut === true) {
-          return "This patron has books checked out; check in all books first"
+          return "This patron has books checked out; check in all books first";
         }
       }
-    }      
+    }   
   }
 
   render() {

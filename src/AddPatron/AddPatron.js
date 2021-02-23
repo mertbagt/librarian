@@ -50,6 +50,7 @@ class AddPatron extends Component {
 
     const newPatron = {id: y, first: first, last: last};
     const newStatus = "New patron " + first + " " + last + " added";
+    const results = [];
 
     this.setState({
       first: {value: '', touched: false},
@@ -57,14 +58,12 @@ class AddPatron extends Component {
     });
     this.context.addPatron(newPatron);
     this.context.updateError(newStatus);
+    this.context.updatePatronResults(results)
   }
 
   render() {
     const firstError = this.validateFirst();
     const lastError = this.validateLast();
-    const error = this.context.error
-          ? <div className="error">{this.context.error}</div>
-          : "";
 
     return (
       <section className="addPatron">
@@ -109,7 +108,6 @@ class AddPatron extends Component {
           <div className="addItem_error_group">
             {this.state.first.touched && <ValidationError message={firstError} />}
             {this.state.last.touched && <ValidationError message={lastError} />}
-            {error}
           </div>
         </form>
       </section>

@@ -39,6 +39,69 @@ const books = [
     pageCount: 694,
     genre: 'political fiction',
     ISBN: '0-553-10354-7'
+  },
+  {
+    id: 1,
+    title: 'Being and Time',
+    pageCount: 589,
+    genre: 'philosophy',
+    ISBN: '0-631-19770-2'
+  },
+  {
+    id: 2,
+    title: 'The Life of Pi',
+    pageCount: 352,
+    genre: 'philosophical fiction',
+    ISBN: '0-676-97376-0'
+  },
+  {
+    id: 3,
+    title: 'And Then There Were None',
+    pageCount: 272,
+    genre: 'mystery',
+    ISBN: '9780312330873'
+  },
+  {
+    id: 4,
+    title: 'The Water Dancer',
+    pageCount: 407,
+    genre: 'historical fiction',
+    ISBN: '978-0-399-59059-7'
+  },
+  {
+    id: 5,
+    title: 'The Eyes of the Dragon',
+    pageCount: 326,
+    genre: 'fantasy',
+    ISBN: '978-0-670-81458-9'
+  },
+  {
+    id: 6,
+    title: 'Where the Crawdads Sing',
+    pageCount: 384,
+    genre: 'literary fiction',
+    ISBN: '9780735219113'
+  },
+  {
+    id: 7,
+    title: 'Mastering the Art of French Cooking',
+    pageCount: 726,
+    genre: 'culinary',
+    ISBN: '0-375-41340-5'
+  },
+  {
+    id: 8,
+    title: 'Notes of a Native Son',
+    pageCount: 192,
+    genre: 'essay',
+    ISBN: '9780807064313'
+  },
+  {
+    id: 9,
+    title: 'The City of God',
+    pageCount: 982,
+    genre: 'philosophy',
+    ISBN: '9780679600879'
   }
 ]
 

@@ -34,16 +34,20 @@ class ResultBook extends Component {
 
   checkStatus() {
     if (this.context.booksCheckedOut.length > 0) {
-      const check = this.context.booksCheckedOut.find(book => book.bookId === this.props.id)
+      let checkedOut = false; 
+      let patrons = this.context.patrons;
+      const check = this.context.booksCheckedOut.find(book => book.bookId === this.props.id);
     
-      const checkedOut = (check.bookId > -1)
-            ? true
-            : false
+      if (check !== undefined) {
+        checkedOut = (check.bookId > -1)
+          ? true
+          : false;
 
-      const patrons = this.context.patrons.filter(patron => patron.id === check.patronId)
+        patrons = this.context.patrons.filter(patron => patron.id === check.patronId); 
+      }
 
       if (checkedOut === true) {
-        return "This book is checked out by " + patrons[0].first + " " + patrons[0].last
+        return "This book is checked out by " + patrons[0].first + " " + patrons[0].last;
       }
     }  
   }

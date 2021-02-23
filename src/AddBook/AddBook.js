@@ -140,7 +140,7 @@ class AddBook extends Component {
                 name="ISBN"
                 id="ISBN"
                 onChange={e => this.updateISBN(e.target.value)}
-                placeholder="123456789-0"
+                placeholder="1-234-56789-0"
                 value={this.state.ISBN.value}
                 required
               /> 
