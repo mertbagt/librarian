@@ -1,24 +1,31 @@
 import  React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+import Context from '../Context'
 import AddPatron from '../AddPatron/AddPatron';
+import SelectPatron from '../SelectPatron/SelectPatron'
 import './Patron.css';
 
 class Patron extends Component {
+  static contextType = Context;
 
-  render() {  
+  render() {
+    const error = this.context.error
+          ? <div className="error">{this.context.error}</div>
+          : "";
+
     return (
       <>
+        {error}
         <h2>Patrons</h2>
-          <AddPatron></AddPatron>
+        <AddPatron />
         <br />        
         <div className="searchPatron">
-          <p>Query for searching Patrons</p>
+          <p>Search / Delete Patrons</p>
         </div>
-        <div className="resultsPatron">
-          <p>Query Results</p>
-        </div>
+        <SelectPatron path={this.props.location.pathname}/>
       </>
     );
   }  
 }
 
-export default Patron;
+export default withRouter(Patron);

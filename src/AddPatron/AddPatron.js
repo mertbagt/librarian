@@ -48,13 +48,15 @@ class AddPatron extends Component {
     const x = this.context.patrons.length - 1;
     const y = this.context.patrons[x].id + 1;
 
-    const newPatron = {id: y, first: first, last: last}
+    const newPatron = {id: y, first: first, last: last};
+    const newStatus = "New patron " + first + " " + last + " added";
 
     this.setState({
       first: {value: '', touched: false},
       last: {value: '', touched: false},
     });
-    this.context.addPatron(newPatron); 
+    this.context.addPatron(newPatron);
+    this.context.updateError(newStatus);
   }
 
   render() {
@@ -67,7 +69,7 @@ class AddPatron extends Component {
     return (
       <section className="addPatron">
         <form id="addPatronForm" className="addPatronForm" onSubmit={e => this.handleSubmit(e)}>
-          <div className='addPatronFormName'>New Patron</div>
+          <div className='addPatronFormName'>Add Patron</div>
           <div className='addItemFormGroup'>
             <div className="addItemFormFlex">
               <label htmlFor="first">First Name: </label>
@@ -98,13 +100,13 @@ class AddPatron extends Component {
             <div className="addItemFormFlex">
               <button
                 type="submit"
-                className="AddPatron_button"
+                className="addPatron_button"
                 disabled={this.validateFirst() || this.validateLast()}
               >Save
               </button>  
             </div>
           </div>
-          <div className="AddItem_error_group">
+          <div className="addItem_error_group">
             {this.state.first.touched && <ValidationError message={firstError} />}
             {this.state.last.touched && <ValidationError message={lastError} />}
             {error}

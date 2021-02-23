@@ -1,13 +1,20 @@
 import  React, {Component} from 'react';
+import Context from '../Context'
 import AddBook from '../AddBook/AddBook';
 import './Book.css';
 
 class Book extends Component {
+  static contextType = Context;
 
-  render() {  
+  render() {
+    const error = this.context.error
+          ? <div className="error">{this.context.error}</div>
+          : "";
+
     return (
       <>
-        <h2>Book</h2>
+        {error}
+        <h2>Books</h2>
         <AddBook></AddBook>
         <br />        
         <div className="searchBook">

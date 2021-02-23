@@ -24,6 +24,11 @@ const patrons = [
     id: 2,
     first: 'John',
     last: 'Baker'
+  },
+  {
+    id: 3,
+    first: 'John',
+    last: 'Barber'
   }
 ];
 
@@ -40,7 +45,10 @@ const books = [
 class App extends Component {
   state = {
     patrons,
-    books
+    books,
+    results: [],
+    currentPatron: [],
+    error: "",
   }
 
   handleAddPatron = (newPatron) => {
@@ -52,6 +60,30 @@ class App extends Component {
   handleAddBook = (newBook) => {
     this.setState({
       books: [...this.state.books, newBook ],
+    })
+  }
+
+  handleError = (newError) => {
+    this.setState({
+      error: newError
+    })
+  }
+
+  handleUpdateResults = (results) => {
+    this.setState({
+      results: results
+    })
+  }
+
+  handleCurrentPatron = (currentPatron) => {
+    this.setState({
+      currentPatron: currentPatron
+    })
+  }
+
+  handleDeletePatron = (id) => {
+    this.setState({
+      patrons: this.state.patrons.filter(patron => patron.id !== id)
     })
   }
 
@@ -79,8 +111,14 @@ class App extends Component {
     const value = {
       patrons: this.state.patrons,
       books: this.state.books,
+      results: this.state.results,
+      currentPatron: this.state.currentPatron,
       addPatron: this.handleAddPatron,
       addBook: this.handleAddBook,
+      updateError: this.handleError,
+      updateResults: this.handleUpdateResults,
+      updateCurrentPatron: this.handleCurrentPatron,
+      deletePatron: this.handleDeletePatron,
       error: this.state.error,      
     };
     return (

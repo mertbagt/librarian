@@ -69,7 +69,8 @@ class AddBook extends Component {
     const x = this.context.books.length - 1;
     const y = this.context.books[x].id + 1;
 
-    const newBook = {id: y, title: title, pageCount: pageCount,  genre: genre, ISBN: ISBN}
+    const newBook = {id: y, title: title, pageCount: pageCount,  genre: genre, ISBN: ISBN};
+    const newStatus = "New book " + title + " added";
 
     this.setState({
       title: {value: '', touched: false},
@@ -78,15 +79,13 @@ class AddBook extends Component {
       ISBN: {value: '', touched: false},        
     })
     this.context.addBook(newBook);
+    this.context.updateError(newStatus);
   }
 
   render() {
     const titleError = this.validateTitle();
     const genreError = this.validateGenre();
     const ISBNError = this.validateISBN();
-    const error = this.context.error
-          ? <div className="error">{this.context.error}</div>
-          : "";
 
     return (
       <section className="addBook">
@@ -149,17 +148,16 @@ class AddBook extends Component {
             <div className="addItemFormFlex">
               <button
                 type="submit"
-                className="AddBook_button"
+                className="addBook_button"
                 disabled={this.validateTitle() || this.validateGenre() || this.validateISBN()}
               >Save
               </button>  
             </div>
           </div>
-          <div className="AddItem_error_group">
+          <div className="addItem_error_group">
             {this.state.title.touched && <ValidationError message={titleError} />}
             {this.state.genre.touched && <ValidationError message={genreError} />}
             {this.state.ISBN.touched && <ValidationError message={ISBNError} />}
-            {error}
           </div>
         </form>
       </section>

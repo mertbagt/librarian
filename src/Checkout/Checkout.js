@@ -1,18 +1,21 @@
 import  React, {Component} from 'react';
+import Context from '../Context'
+import SelectPatron from '../SelectPatron/SelectPatron'
 import './Checkout.css';
 
 class Checkout extends Component {
+  static contextType = Context;
 
-  render() {  
+  render() {
+    const error = this.context.error
+          ? <div className="error">{this.context.error}</div>
+          : "";
+
     return (
       <>
+        {error}
         <h2>Checkout</h2>
-        <div className="selectPatronOut">
-          <p>Form to select/search patron ready to check books out</p>
-        </div>
-        <div className="resultsPatronOut">
-          <p>&nbsp;&nbsp;&nbsp;Display selected user if no error; otherwise error if not found, etc</p>  
-        </div>
+        <SelectPatron />
         <br />              
         <div className="searchBookOut">
           <p>Query for searching Books</p>

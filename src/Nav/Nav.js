@@ -1,10 +1,19 @@
 import  React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Context from '../Context';
 import './Nav.css';
 
 class Nav extends Component {
-//  static contextType = Context;
-    
+  static contextType = Context;
+
+  handleReset = e => {
+    const results = [];
+    const newError = [];
+
+    this.context.updateResults(results);
+    this.context.updateError(newError);
+  }  
+
   render() {
     return (
       <>
@@ -16,16 +25,28 @@ class Nav extends Component {
             <Link to={`/`}>about</Link>
           </div>
           <div className={"navitem"}>
-            <Link to={`/patron`}>patrons</Link>
+            <Link 
+              to={`/patron`}
+              onClick={this.handleReset}
+            >patrons</Link>
           </div>
           <div className={"navitem"}>
-            <Link to={`/book`}>books</Link>
+            <Link 
+              to={`/book`}
+              onClick={this.handleReset}
+            >books</Link>
           </div>
           <div className={"navitem"}>
-            <Link to={`/checkin`}>checkin</Link>
+            <Link 
+              to={`/checkin`}
+              onClick={this.handleReset}
+            >checkin</Link>
           </div>
           <div className={"navitem"}>
-            <Link to={`/checkout`}>checkout</Link>
+            <Link 
+              to={`/checkout`}
+              onClick={this.handleReset}
+            >checkout</Link>
           </div>
         </div>
       </>
