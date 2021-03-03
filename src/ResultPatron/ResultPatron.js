@@ -92,12 +92,6 @@ class ResultPatron extends Component {
             <ValidationError message={checkStatus} />
           </td>  
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>  
-        </tr>
       </>
     );
   }  

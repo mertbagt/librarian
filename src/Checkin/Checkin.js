@@ -8,7 +8,7 @@ class Checkin extends Component {
   static contextType = Context;
 
   render() {
-    const error = (this.context.error && (this.context.error != ("No patrons found" && "No books found")))
+    const error = (this.context.error && (this.context.error != "No patrons found") && (this.context.error != "No books found"))
           ? <div className="error">{this.context.error}</div>
           : "";
 

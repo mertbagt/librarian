@@ -85,24 +85,24 @@ class SelectPatron extends Component {
           <h4 className='selectPatronFormName'>Select Patron</h4>
           <div className='selectItemFormGroup'>
             <div className="selectItemFormFlex">
-              <label htmlFor="first">First Name: </label>
+              <label htmlFor="firstSelect">First Name: </label>
               <input
                 type="text"
                 className="selectPatron_input"
                 name="first"
-                id="first"
+                id="firstSelect"
                 onChange={e => this.updateFirst(e.target.value)}
                 placeholder="enter a first name"
                 value={this.state.first.value}
               /> 
             </div>
             <div className="selectItemFormFlex">
-              <label htmlFor="last">Last Name: </label>
+              <label htmlFor="lastSelect">Last Name: </label>
               <input
                 type="text"
                 className="selectPatron_input"
                 name="last"
-                id="last"
+                id="lastSelect"
                 onChange={e => this.updateLast(e.target.value)}
                 placeholder="enter a last name"
                 value={this.state.last.value}

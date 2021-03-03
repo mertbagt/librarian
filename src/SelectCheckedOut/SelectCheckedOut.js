@@ -21,7 +21,7 @@ class SelectCheckedOut extends Component {
 
     return (
       <section className="selectCheckedOut">  
-        <table id={"resultsTable"}>
+        <table id={"resultsTableChecks"}>
           <tbody>
             {results.map((result, index) => 
               <ResultCheckedOut key={index} subkey={index} path={this.props.path} bookId={result.bookId} checkId={result.checkId}/>

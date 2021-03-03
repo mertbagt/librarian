@@ -100,19 +100,19 @@ class SelectBook extends Component {
                 type="text"
                 className="selectBook_input"
                 name="title"
-                id="title"
+                id="titleSelect"
                 onChange={e => this.updateTitle(e.target.value)}
                 placeholder="enter a book title"
                 value={this.state.title.value}
               /> 
             </div>
             <div className="selectItemFormFlex">
-              <label htmlFor="minCount">Minimum Page Count: </label>
+              <label htmlFor="minCountSelect">Minimum Page Count: </label>
               <input
                 type="number"
                 className="selectBook_input"
                 name="minCount"
-                id="minCount"
+                id="minCountSelect"
                 min="1"
                 max="50000"
                 onChange={e => this.updateMinCount(e.target.value)}
@@ -120,12 +120,12 @@ class SelectBook extends Component {
               /> 
             </div>
             <div className="selectItemFormFlex">
-              <label htmlFor="maxCount">Maximum Page Count: </label>
+              <label htmlFor="maxCountSelect">Maximum Page Count: </label>
               <input
                 type="number"
                 className="selectBook_input"
-                name="minCount"
-                id="minCount"
+                name="maxCount"
+                id="maxCountSelect"
                 min="1"
                 max="50000"
                 onChange={e => this.updateMaxCount(e.target.value)}
@@ -138,7 +138,7 @@ class SelectBook extends Component {
                 type="text"
                 className="selectBook_input"
                 name="genre"
-                id="genre"
+                id="genreSelect"
                 onChange={e => this.updateGenre(e.target.value)}
                 placeholder="enter a genre"
                 value={this.state.genre.value}
@@ -150,7 +150,7 @@ class SelectBook extends Component {
                 type="text"
                 className="selectBook_input"
                 name="ISBN"
-                id="ISBN"
+                id="ISBNSelect"
                 onChange={e => this.updateISBN(e.target.value)}
                 placeholder="1-234-56789-0"
                 value={this.state.ISBN.value}
