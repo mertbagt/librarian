@@ -47,7 +47,11 @@ class AddPatron extends Component {
     const last = this.state.last.value;
 
     const x = this.context.patrons.length - 1;
-    const y = this.context.patrons[x].id + 1;
+    let y = 0;
+
+    if (this.context.patrons[x] != undefined) {
+      y = this.context.patrons[x].id + 1;
+    }
 
     const newPatron = {id: y, first: first, last: last};
     const newStatus = "New patron " + first + " " + last + " added";
@@ -88,7 +92,7 @@ class AddPatron extends Component {
     return (
       <section className="addPatron">
         <form id="addPatronForm" className="addPatronForm" onSubmit={e => this.handleSubmit(e)}>
-          <div className='addPatronFormName'>Add Patron</div>
+          <h4 className='addPatronFormName'>Add Patron</h4>
           <div className='addItemFormGroup'>
             <div className="addItemFormFlex">
               <label htmlFor="first">First Name: </label>

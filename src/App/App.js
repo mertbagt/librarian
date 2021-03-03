@@ -123,6 +123,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('Fetching info from database')
+    this.handleError('Fetching info from database')
     Promise.all([
       fetch(`${config.API_ENDPOINT}/patrons`),
       fetch(`${config.API_ENDPOINT}/books`),
@@ -138,6 +140,8 @@ class App extends Component {
             return Promise.all([patronsRes.json(), booksRes.json(), checksRes.json()]);
         })
         .then(([patrons, books, booksCheckedOut]) => {
+          console.log('Fetching successful')
+          this.handleError('Fetch successful')
             this.setState({patrons, books, booksCheckedOut});
         })
         .catch(error => {

@@ -9,7 +9,7 @@ class Patron extends Component {
   static contextType = Context;
 
   render() {
-    const error = this.context.error
+    const error = (this.context.error && (this.context.error != "No patrons found"))
           ? <div className="error">{this.context.error}</div>
           : "";
 
@@ -20,7 +20,7 @@ class Patron extends Component {
         <AddPatron />
         <br />        
         <div className="searchPatron">
-          <p>Search / Delete Patrons</p>
+          <h3>Search / Delete Patrons</h3>
         </div>
         <SelectPatron path={this.props.location.pathname}/>
       </>

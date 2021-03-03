@@ -13,6 +13,12 @@ class SelectCheckedOut extends Component {
 
     results = results.filter(result => result.patronId === patronId)
 
+    const noChecks = (results.length === 0)
+          ? <h5 className="noChecks">
+              This patron does not have any books checked out currently 
+            </h5>
+          : "";
+
     return (
       <section className="selectCheckedOut">  
         <table id={"resultsTable"}>
@@ -22,6 +28,7 @@ class SelectCheckedOut extends Component {
             )}
           </tbody>
         </table>
+        {noChecks}
       </section>
     );
   }  

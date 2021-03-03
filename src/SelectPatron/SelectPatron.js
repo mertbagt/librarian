@@ -46,7 +46,7 @@ class SelectPatron extends Component {
     let newError = "";
 
     if (results.length === 0) {
-      newError = "No results found"
+      newError = "No patrons found"
     }
 
     this.context.updateError(newError);
@@ -69,6 +69,12 @@ class SelectPatron extends Component {
               Selected Patron: {this.context.currentPatron.first} {this.context.currentPatron.last}
             </h3>
           : "";
+
+    const noResults = (this.context.error === "No patrons found")
+          ? <h5 className="noResults">
+              No patrons found 
+            </h5>
+          : "";
     
     return (
       <section className="selectPatron">
@@ -76,7 +82,7 @@ class SelectPatron extends Component {
           {currentPatron}
         </div>  
         <form id="selectPatronForm" className="selectPatronForm" onSubmit={e => this.handleSubmit(e)}>
-          <div className='selectPatronFormName'>Select Patron</div>
+          <h4 className='selectPatronFormName'>Select Patron</h4>
           <div className='selectItemFormGroup'>
             <div className="selectItemFormFlex">
               <label htmlFor="first">First Name: </label>
@@ -111,6 +117,7 @@ class SelectPatron extends Component {
           </div>
         </form>
         {resultPatron}
+        {noResults}
       </section>
     );
   }  

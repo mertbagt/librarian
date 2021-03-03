@@ -74,7 +74,7 @@ class SelectBook extends Component {
     let newError = "";
 
     if (results.length === 0) {
-      newError = "No results found"
+      newError = "No books found"
     }
 
     this.context.updateError(newError);
@@ -83,10 +83,16 @@ class SelectBook extends Component {
   render() {
     const results = this.context.bookResults;
 
+    const noResults = (this.context.error === "No books found")
+          ? <h5 className="noResults">
+              No books found 
+            </h5>
+          : "";
+
     return (
       <section className="selectBook">  
         <form id="selectBookForm" className="selectBookForm" onSubmit={e => this.handleSubmit(e)}>
-          <div className='selectBookFormName'>Select Book</div>
+          <h4 className='selectBookFormName'>Select Book</h4>
           <div className='selectItemFormGroup'>
             <div className="selectItemFormFlex">
               <label htmlFor="title">Book Title: </label>
@@ -165,6 +171,7 @@ class SelectBook extends Component {
             )}
           </tbody>
         </table>
+        {noResults}
       </section>
     );
   }  

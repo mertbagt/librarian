@@ -111,7 +111,7 @@ class AddBook extends Component {
     return (
       <section className="addBook">
         <form id="addBookForm" className="addBookForm" onSubmit={e => this.handleSubmit(e)}>
-          <div className='addBookFormName'>New Book</div>
+          <h4 className='addBookFormName'>Add Book</h4>
           <div className='addItemFormGroup'>
             <div className="addItemFormFlex">
               <label htmlFor="title">Book Title: </label>

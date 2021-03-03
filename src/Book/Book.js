@@ -9,7 +9,7 @@ class Book extends Component {
   static contextType = Context;
 
   render() {
-    const error = this.context.error
+    const error = (this.context.error && (this.context.error != "No books found"))
           ? <div className="error">{this.context.error}</div>
           : "";
 
@@ -20,7 +20,7 @@ class Book extends Component {
         <AddBook />
         <br />        
         <div className="searchBook">
-          <p>Search / Delete Books</p>
+          <h3>Search / Delete Books</h3>
         </div>
         <SelectBook path={this.props.location.pathname}/>
       </>
