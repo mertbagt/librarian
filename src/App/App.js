@@ -169,9 +169,26 @@ class App extends Component {
   }
 
   handleAddBook = (newBook) => {
+/*  
     this.setState({
       books: [...this.state.books, newBook ],
     })
+*/
+
+    fetch(`${config.API_ENDPOINT}/books`)
+       .then(res => {
+         if(!res.ok) {
+           throw new Error('Something went wrong, please try again later');
+         }
+         return res.json();
+       })  
+       .then(books => {
+         this.setState({books});
+       })
+       .catch(error => {
+         this.handleError(error.message);
+         console.error({error});
+       });
   }
 
   handleCheckBookOut = (bookCheckedOut) => {
