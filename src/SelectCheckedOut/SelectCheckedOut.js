@@ -9,7 +9,7 @@ class SelectCheckedOut extends Component {
 
   render() {
     let results = this.context.booksCheckedOut;
-    const patronId = this.context.currentPatron.id
+    const patronId = this.context.currentPatron.patronId
 
     results = results.filter(result => result.patronId === patronId)
 
@@ -18,7 +18,7 @@ class SelectCheckedOut extends Component {
         <table id={"resultsTable"}>
           <tbody>
             {results.map((result, index) => 
-              <ResultCheckedOut key={index} subkey={index} path={this.props.path} bookId={result.bookId} />
+              <ResultCheckedOut key={index} subkey={index} path={this.props.path} bookId={result.bookId} checkId={result.checkId}/>
             )}
           </tbody>
         </table>

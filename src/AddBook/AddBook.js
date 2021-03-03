@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import ValidationError from '../ValidationError/ValidationError';
+import config from '../config';
 import './AddBook.css';
 
 class AddBook extends Component {
@@ -69,17 +70,37 @@ class AddBook extends Component {
     const x = this.context.books.length - 1;
     const y = this.context.books[x].id + 1;
 
+    const newDbBook = {id: y, title: title, page_count: pageCount, genre: genre, isbn: ISBN};
     const newBook = {id: y, title: title, pageCount: pageCount,  genre: genre, ISBN: ISBN};
     const newStatus = "New book " + title + " added";
 
-    this.setState({
-      title: {value: '', touched: false},
-      pageCount: 0,
-      genre: {value: '', touched: false},
-      ISBN: {value: '', touched: false},        
+    fetch(`${config.API_ENDPOINT}/books`, {
+      method: 'POST',
+      body: JSON.stringify(newDbBook),
+      headers: {
+        'content-type': 'application/json'
+      },
     })
-    this.context.addBook(newBook);
-    this.context.updateError(newStatus);
+    .then(res => {
+      if(!res.ok) {
+        throw new Error('Something went wrong, please try again later');
+      }
+      return res.json();
+    })
+    .then(data => {
+      this.setState({
+        title: {value: '', touched: false},
+        pageCount: 0,
+        genre: {value: '', touched: false},
+        ISBN: {value: '', touched: false},        
+      })
+      this.context.addBook(newBook);
+      this.context.updateError(newStatus);
+    })  
+    .catch(error => {
+      this.context.updateError(error.message);
+      console.error({ error });
+    })   
   }
 
   render() {

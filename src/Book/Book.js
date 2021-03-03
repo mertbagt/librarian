@@ -17,7 +17,7 @@ class Book extends Component {
       <>
         {error}
         <h2>Books</h2>
-        <AddBook></AddBook>
+        <AddBook />
         <br />        
         <div className="searchBook">
           <p>Search / Delete Books</p>

@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import ValidationError from '../ValidationError/ValidationError';
+import config from '../config';
 import './AddPatron.css';
 
 class AddPatron extends Component {
@@ -52,13 +53,32 @@ class AddPatron extends Component {
     const newStatus = "New patron " + first + " " + last + " added";
     const results = [];
 
-    this.setState({
-      first: {value: '', touched: false},
-      last: {value: '', touched: false},
-    });
-    this.context.addPatron(newPatron);
-    this.context.updateError(newStatus);
-    this.context.updatePatronResults(results)
+    fetch(`${config.API_ENDPOINT}/patrons`, {
+      method: 'POST',
+      body: JSON.stringify(newPatron),
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    .then(res => {
+      if(!res.ok) {
+        throw new Error('Something went wrong, please try again later');
+      }
+      return res.json();
+    })
+    .then(data => {
+      this.setState({
+        first: {value: '', touched: false},
+        last: {value: '', touched: false},
+      });
+      this.context.addPatron(newPatron);
+      this.context.updateError(newStatus);
+      this.context.updatePatronResults(results)
+    })  
+    .catch(error => {
+      this.context.updateError(error.message);
+      console.error({ error });
+    })   
   }
 
   render() {

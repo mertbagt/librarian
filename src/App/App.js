@@ -7,8 +7,11 @@ import Book from '../Book/Book';
 import Checkin from '../Checkin/Checkin';
 import Checkout from '../Checkout/Checkout';
 import Context from '../Context';
+import config from '../config';
 import './App.css';
 
+
+/*
 const patrons = [
   {
     id: 0,
@@ -106,22 +109,63 @@ const books = [
 ]
 
 const booksCheckedOut = []
+*/
 
 class App extends Component {
   state = {
-    patrons,
-    books,
-    booksCheckedOut,
+    patrons: [],
+    books: [],
+    booksCheckedOut: [],
     patronResults: [],
     bookResults: [],
     currentPatron: [],
     error: "",
   }
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/patrons`),
+      fetch(`${config.API_ENDPOINT}/books`),
+      fetch(`${config.API_ENDPOINT}/checks`),
+    ])
+        .then(([patronsRes, booksRes, checksRes]) => {
+            if (!patronsRes.ok)
+              return patronsRes.json().then(e => Promise.reject(e));
+            if (!booksRes.ok)
+              return booksRes.json().then(e => Promise.reject(e));
+            if (!checksRes.ok)
+              return checksRes.json().then(e => Promise.reject(e));     
+            return Promise.all([patronsRes.json(), booksRes.json(), checksRes.json()]);
+        })
+        .then(([patrons, books, booksCheckedOut]) => {
+            this.setState({patrons, books, booksCheckedOut});
+        })
+        .catch(error => {
+            this.handleError(error.message);
+            console.error({error});
+        });
+  }
+
   handleAddPatron = (newPatron) => {
+/*
     this.setState({
       patrons: [...this.state.patrons, newPatron ],
     })
+*/
+    fetch(`${config.API_ENDPOINT}/patrons`)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('Something went wrong, please try again later');
+        }
+        return res.json();
+      })  
+      .then(patrons => {
+        this.setState({patrons});
+      })
+      .catch(error => {
+        this.handleError(error.message);
+        console.error({error});
+      });
   }
 
   handleAddBook = (newBook) => {
@@ -131,18 +175,49 @@ class App extends Component {
   }
 
   handleCheckBookOut = (bookCheckedOut) => {
+/*
     this.setState({
       booksCheckedOut: [...this.state.booksCheckedOut, bookCheckedOut ],
     })
+*/
+    fetch(`${config.API_ENDPOINT}/checks`)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('Something went wrong, please try again later');
+        }
+        return res.json();
+      })  
+      .then(booksCheckedOut => {
+        this.setState({booksCheckedOut});
+      })
+      .catch(error => {
+        this.handleError(error.message);
+        console.error({error});
+      });
   }
 
   handleCheckIn = (bookId) => {
-    console.log(bookId);
-    console.log(typeof(bookId))
-
+//    console.log(bookId);
+//    console.log(typeof(bookId))
+/*
     this.setState({
       booksCheckedOut: this.state.booksCheckedOut.filter(book => (book.bookId !== bookId))
     })
+*/
+    fetch(`${config.API_ENDPOINT}/checks`)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('Something went wrong, please try again later');
+        }
+        return res.json();
+      })  
+      .then(booksCheckedOut => {
+        this.setState({booksCheckedOut});
+      })
+      .catch(error => {
+        this.handleError(error.message);
+        console.error({error});
+      });    
   }
 
   handleError = (newError) => {
@@ -171,13 +246,13 @@ class App extends Component {
 
   handleDeletePatron = (id) => {
     this.setState({
-      patrons: this.state.patrons.filter(patron => patron.id !== id)
+      patrons: this.state.patrons.filter(patron => patron.patronId !== id)
     })
   }
 
   handleDeleteBook = (id) => {
     this.setState({
-      books: this.state.books.filter(book => book.id !== id)
+      books: this.state.books.filter(book => book.bookId !== id)
     })
   }    
 

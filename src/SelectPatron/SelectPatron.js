@@ -59,7 +59,7 @@ class SelectPatron extends Component {
           : <table id={"resultsTable"}>
               <tbody>
                 {results.map((result, index) => 
-                  <ResultPatron key={index} subkey={index} path={this.props.path} id={result.id} first={result.first} last={result.last} />
+                  <ResultPatron key={index} subkey={index} path={this.props.path} id={result.patronId} first={result.first} last={result.last} />
                 )}
               </tbody>
             </table>;

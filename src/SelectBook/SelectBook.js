@@ -161,7 +161,7 @@ class SelectBook extends Component {
         <table id={"resultsTable"}>
           <tbody>
             {results.map((result, index) => 
-              <ResultBook key={index} subkey={index} path={this.props.path} id={result.id} title={result.title} pageCount={result.pageCount} genre={result.genre} ISBN={result.ISBN} />
+              <ResultBook key={index} subkey={index} path={this.props.path} id={result.bookId} title={result.title} pageCount={result.pageCount} genre={result.genre} ISBN={result.ISBN} />
             )}
           </tbody>
         </table>

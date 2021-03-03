@@ -1,5 +1,6 @@
 import  React, {Component} from 'react';
-import Context from '../Context'
+import Context from '../Context';
+import config from '../config';
 import ValidationError from '../ValidationError/ValidationError';
 import './ResultCheckedOut.css';
 
@@ -9,10 +10,30 @@ class ResultCheckedOut extends Component {
   handleDelete = e => {
     e.preventDefault();
 
+    const checkId = this.props.checkId;
     const bookId = this.props.bookId;
+    const title = this.getTitle();
+    const newStatus = "Checked in: " + title;
 
-    this.context.checkIn(bookId);
-
+    fetch(`${config.API_ENDPOINT}/checks/${checkId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    .then(res => {
+      if (!res.ok)
+        return res.then(e => Promise.reject(e))
+      return res
+    })
+    .then(() => {
+      this.context.checkIn(bookId);
+      this.context.updateError(newStatus);
+    })
+    .catch(error => {
+      this.context.updateError(error.message);
+      console.error({ error })
+    })
 
 //    const results = [];
 //    const newStatus = "Deleted book: " + this.props.title;
@@ -24,7 +45,7 @@ class ResultCheckedOut extends Component {
 
   getTitle() {
     const books = this.context.books;
-    const found = books.find(book => book.id === this.props.bookId);
+    const found = books.find(book => book.bookId === this.props.bookId);
     return found.title;
   }
 

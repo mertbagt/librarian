@@ -1,5 +1,6 @@
 import  React, {Component} from 'react';
-import Context from '../Context'
+import Context from '../Context';
+import config from '../config';
 import ValidationError from '../ValidationError/ValidationError';
 import './ResultPatron.css';
 
@@ -13,16 +14,34 @@ class ResultPatron extends Component {
     const results = [];
     const newStatus = "Deleted patron: " + this.props.first + " " + this.props.last;
 
-    this.context.deletePatron(id);
-    this.context.updatePatronResults(results);
-    this.context.updateError(newStatus)
+
+    fetch(`${config.API_ENDPOINT}/patrons/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    .then(res => {
+      if (!res.ok)
+        return res.then(e => Promise.reject(e))
+      return res
+    })
+    .then(() => {
+      this.context.deletePatron(id);
+      this.context.updatePatronResults(results);
+      this.context.updateError(newStatus)
+    })
+    .catch(error => {
+      this.context.updateError(error.message);
+      console.error({ error })
+    })
   }
 
   handleSubmit = e => {
     e.preventDefault();
 
     const id = this.props.id;
-    const currentPatron = this.context.patrons[id];
+    const currentPatron = this.context.patrons.find(patron => patron.patronId === id);
     const results = [];
 
     this.context.updateCurrentPatron(currentPatron);
