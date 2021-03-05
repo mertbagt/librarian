@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import Context from '../Context'
+import Error from '../Error/Error';
+import Context from '../Context';
 import AddBook from '../AddBook/AddBook';
 import SelectBook from '../SelectBook/SelectBook';
 import './Book.css';
@@ -9,13 +10,13 @@ class Book extends Component {
   static contextType = Context;
 
   render() {
-    const error = (this.context.error && (this.context.error != "No books found"))
-          ? <div className="errorTop">{this.context.error}</div>
-          : "";
+//    const error = (this.context.error && (this.context.error != "No books found"))
+//          ? <div className="errorTop">{this.context.error}</div>
+//          : "";
 
     return (
       <>
-        {error}
+        <Error />
         <h2>Books</h2>
         <AddBook />
         <br />        

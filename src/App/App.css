@@ -12,6 +12,11 @@ h4 {
     text-align: center;
 }
 
+h5 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 section {
     margin: 0 0 0 0;
 }
@@ -43,9 +48,10 @@ label+input {
     margin: 0 10% 0 4%;
 }
 
-button, submit {
-    border: 0px solid black;
+button {
     background-color: #F8F4E3;
+    border: 0px solid black;
+    border-radius: 15px;
 }
 
 .button {
@@ -67,6 +73,27 @@ button, submit {
     padding: 0 0 5px 0;
 }
 
+.errorTop, .noChecks {
+
+    
+}
+
 .errorTop {
-    text-align: center;
+    align-self: center;
+    background-color: #5BC0EB;
+    border-radius: 25px;
+    color: black;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;  
+    width: 50%;
+
+}
+
+.noChecks, .noResults {
+    background-color: #456990;
+    border-radius: 25px;
+    padding: 10px;
+    width: fit-content;
 }

@@ -1,21 +1,22 @@
 import  React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import Context from '../Context'
+import Context from '../Context';
+import Error from '../Error/Error';
 import AddPatron from '../AddPatron/AddPatron';
-import SelectPatron from '../SelectPatron/SelectPatron'
+import SelectPatron from '../SelectPatron/SelectPatron';
 import './Patron.css';
 
 class Patron extends Component {
   static contextType = Context;
 
   render() {
-    const error = (this.context.error && (this.context.error != "No patrons found"))
-          ? <div className="errorTop">{this.context.error}</div>
-          : "";
+//    const error = (this.context.error && (this.context.error != "No patrons found"))
+//          ? <div className="errorTop">{this.context.error}</div>
+//          : "";
 
     return (
       <>
-        {error}
+        <Error />
         <h2>Patrons</h2>
         <AddPatron />
         <br />        

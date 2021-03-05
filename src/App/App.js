@@ -165,6 +165,20 @@ class App extends Component {
       })  
       .then(patrons => {
         this.setState({patrons});
+
+        let results = this.state.patrons;
+        const first = newPatron.first;
+        const last = newPatron.last;
+
+        if (first != '') {
+          results = results.filter(result => result.first.search(first) > -1)
+        }
+    
+        if (last != '') {
+          results = results.filter(result => result.last.search(last) > -1)
+        }
+    
+        this.handleUpdatePatronResults(results)
       })
       .catch(error => {
         this.handleError(error.message);
@@ -188,6 +202,25 @@ class App extends Component {
        })  
        .then(books => {
          this.setState({books});
+
+         let results = this.state.books;
+         const title = newBook.title;
+         const genre = newBook.genre;
+         const ISBN = newBook.ISBN;
+
+         if (title != '') {
+           results = results.filter(result => result.title.search(title) > -1)
+         }
+        
+         if (genre != '') {
+           results = results.filter(result => result.genre.search(genre) > -1)
+         }
+     
+         if (ISBN != '') {
+           results = results.filter(result => result.ISBN.search(ISBN) > -1)
+         }
+     
+         this.handleUpdateBookResults(results)
        })
        .catch(error => {
          this.handleError(error.message);

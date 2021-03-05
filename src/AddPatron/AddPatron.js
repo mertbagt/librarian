@@ -55,7 +55,7 @@ class AddPatron extends Component {
 
     const newPatron = {id: y, first: first, last: last};
     const newStatus = "New patron " + first + " " + last + " added";
-    const results = [];
+//    const results = [];
 
     fetch(`${config.API_ENDPOINT}/patrons`, {
       method: 'POST',
@@ -77,12 +77,12 @@ class AddPatron extends Component {
       });
       this.context.addPatron(newPatron);
       this.context.updateError(newStatus);
-      this.context.updatePatronResults(results)
+//      this.context.updatePatronResults(results)
     })  
     .catch(error => {
       this.context.updateError(error.message);
       console.error({ error });
-    })   
+    })
   }
 
   render() {
