@@ -27,20 +27,39 @@ form {
 label, input {
     display: inline-block;
 }
-  
+
+input {
+    background-color: #F8F4E3;
+    border: 0px solid black;
+}
+
 label {
     text-align: right;
     margin: 0 0 0 5%;;
     min-width: 80px;
 }
-  
+
 label+input {
     margin: 0 10% 0 4%;
 }
-  
+
+button, submit {
+    border: 0px solid black;
+    background-color: #F8F4E3;
+}
+
 .button {
     padding: 0 0 5px 0;
     text-align: center;
+}
+
+.deletePatron, .deleteBook, .submitPatron, .submitBook {
+    border-radius: 50%;
+}
+
+.submitPatron, .submitBook {
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
 }
 
 .addItem_error_group {
