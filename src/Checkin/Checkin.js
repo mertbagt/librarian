@@ -9,7 +9,11 @@ class Checkin extends Component {
 
   render() {
     const error = (this.context.error && (this.context.error != "No patrons found") && (this.context.error != "No books found"))
-          ? <div className="error">{this.context.error}</div>
+          ? <div className="errorTop">{this.context.error}</div>
+          : "";
+
+    const selectCheckOut =  (this.context.currentPatron.length !== 0)
+          ? <SelectCheckedOut />
           : "";
 
     return (
@@ -18,10 +22,7 @@ class Checkin extends Component {
         <h2>Checkin</h2>
         <SelectPatron />
         <br />        
-        <div className="resultsCheckin">
-          <h3>Books currently checked out by this patron</h3>
-        </div>
-        <SelectCheckedOut />
+        {selectCheckOut}
       </>
     );
   }  

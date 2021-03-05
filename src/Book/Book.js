@@ -10,7 +10,7 @@ class Book extends Component {
 
   render() {
     const error = (this.context.error && (this.context.error != "No books found"))
-          ? <div className="error">{this.context.error}</div>
+          ? <div className="errorTop">{this.context.error}</div>
           : "";
 
     return (

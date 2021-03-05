@@ -97,20 +97,12 @@ class ResultBook extends Component {
           :<button className='submitBook' type='button' onClick={this.handleSubmit} disabled={this.checkStatus()}>+</button>
 
     return (
-      <>  
-        <tr key={this.props.subkey}>
-          <td>{bookButton} {this.props.title} <ValidationError message={checkStatus} /></td> 
-        </tr>  
-        <tr>
-          <td>Page Count: {this.props.pageCount}</td> 
-        </tr>
-        <tr>
-          <td>Genre: {this.props.genre}</td>
-        </tr>
-        <tr>
-          <td>ISBN: {this.props.ISBN}</td>
-        </tr>
-      </>
+      <ul>  
+        <li>{bookButton} {this.props.title} <ValidationError message={checkStatus} /></li> 
+        <li>Page Count: {this.props.pageCount}</li> 
+        <li>Genre: {this.props.genre}</li>
+        <li>ISBN: {this.props.ISBN}</li>
+      </ul>
     );
   }  
 }

@@ -1,0 +1,24 @@
+table { 
+    border-collapse: separate; 
+    border-spacing: 0 10px; 
+    margin-right: 5px;
+}
+
+td {
+    border: solid 1px #5095BE;
+    border-style: solid none;
+    padding: 10px;
+    background-color: #456990;
+}
+
+td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+
+td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+}

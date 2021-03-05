@@ -20,7 +20,8 @@ class SelectCheckedOut extends Component {
           : "";
 
     return (
-      <section className="selectCheckedOut">  
+      <section className="selectCheckedOut">
+        <h3>Books currently checked out by this patron:</h3> 
         <table id={"resultsTableChecks"}>
           <tbody>
             {results.map((result, index) => 

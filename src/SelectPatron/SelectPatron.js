@@ -64,7 +64,7 @@ class SelectPatron extends Component {
               </tbody>
             </table>;
 
-    const currentPatron = (this.context.currentPatron && (this.props.path != "/patron"))
+    const currentPatron = ((this.context.currentPatron.length !== 0) && (this.props.path != "/patron"))
           ? <h3 className="currentPatron">
               Selected Patron: {this.context.currentPatron.first} {this.context.currentPatron.last}
             </h3>
@@ -108,7 +108,7 @@ class SelectPatron extends Component {
                 value={this.state.last.value}
               /> 
             </div>
-            <div className="selectItemFormFlex">
+            <div className="selectItemFormFlex button">
               <button
                 type="submit"
                 className="selectPatron_button"                

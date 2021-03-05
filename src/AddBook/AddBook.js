@@ -127,7 +127,7 @@ class AddBook extends Component {
               /> 
             </div>
             <div className="addItemFormFlex">
-              <label htmlFor="count">Page Count: </label>
+              <label htmlFor="count">Pages: </label>
               <input
                 type="number"
                 className="addBook_input"
@@ -166,7 +166,7 @@ class AddBook extends Component {
                 required
               /> 
             </div>
-            <div className="addItemFormFlex">
+            <div className="addItemFormFlex button">
               <button
                 type="submit"
                 className="addBook_button"

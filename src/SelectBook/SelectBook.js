@@ -107,7 +107,7 @@ class SelectBook extends Component {
               /> 
             </div>
             <div className="selectItemFormFlex">
-              <label htmlFor="minCountSelect">Minimum Page Count: </label>
+              <label htmlFor="minCountSelect">Min Pages: </label>
               <input
                 type="number"
                 className="selectBook_input"
@@ -120,7 +120,7 @@ class SelectBook extends Component {
               /> 
             </div>
             <div className="selectItemFormFlex">
-              <label htmlFor="maxCountSelect">Maximum Page Count: </label>
+              <label htmlFor="maxCountSelect">Max Pages: </label>
               <input
                 type="number"
                 className="selectBook_input"
@@ -156,7 +156,7 @@ class SelectBook extends Component {
                 value={this.state.ISBN.value}
               /> 
             </div>
-            <div className="selectItemFormFlex">
+            <div className="selectItemFormFlex button">
               <button
                 type="submit"
                 className="selectBook_button"                
@@ -164,13 +164,11 @@ class SelectBook extends Component {
             </div>
           </div>
         </form>
-        <table id={"resultsTable"}>
-          <tbody>
-            {results.map((result, index) => 
-              <ResultBook key={index} subkey={index} path={this.props.path} id={result.bookId} title={result.title} pageCount={result.pageCount} genre={result.genre} ISBN={result.ISBN} />
-            )}
-          </tbody>
-        </table>
+        <div className="bookResults">
+          {results.map((result, index) => 
+            <ResultBook key={index} subkey={index} path={this.props.path} id={result.bookId} title={result.title} pageCount={result.pageCount} genre={result.genre} ISBN={result.ISBN} />
+          )}
+        </div>
         {noResults}
       </section>
     );

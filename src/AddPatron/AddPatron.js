@@ -120,7 +120,7 @@ class AddPatron extends Component {
                 required
               /> 
             </div>
-            <div className="addItemFormFlex">
+            <div className="addItemFormFlex button">
               <button
                 type="submit"
                 className="addPatron_button"

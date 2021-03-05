@@ -140,8 +140,8 @@ class App extends Component {
             return Promise.all([patronsRes.json(), booksRes.json(), checksRes.json()]);
         })
         .then(([patrons, books, booksCheckedOut]) => {
-          console.log('Fetching successful')
-          this.handleError('Fetch successful')
+          console.log('Fetch successful')
+          this.handleError('Data Fetched successfully')
             this.setState({patrons, books, booksCheckedOut});
         })
         .catch(error => {

@@ -75,7 +75,7 @@ class ResultPatron extends Component {
 
     return (
       <>
-        <tr key={this.props.subkey}>
+        <tr key={this.props.subkey} className='patronRow'>
           <td className={"right"}>
             {patronButton}
           </td>  

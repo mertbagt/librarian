@@ -1,1 +1,53 @@
+html {
+    background-color: #5095BE;
+    color: #F8F4E3
+}
 
+main {
+  margin-left: 5px;
+}
+
+h4 {
+    margin-block-start: 0;
+    text-align: center;
+}
+
+section {
+    margin: 0 0 0 0;
+}
+
+form {
+    border-radius: 25px;
+    margin: 0 10px 0 10px;
+    max-width: 405px;
+    background-color: #5BC0EB;
+    color: black;
+}
+
+label, input {
+    display: inline-block;
+}
+  
+label {
+    text-align: right;
+    margin: 0 0 0 5%;;
+    min-width: 80px;
+}
+  
+label+input {
+    margin: 0 10% 0 4%;
+}
+  
+.button {
+    padding: 0 0 5px 0;
+    text-align: center;
+}
+
+.addItem_error_group {
+    margin: 0 0 0 5%;
+    padding: 0 0 5px 0;
+}
+
+.errorTop {
+    text-align: center;
+}
