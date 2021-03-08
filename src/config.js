@@ -1,5 +1,5 @@
 const config =  {
-    API_ENDPOINT: `http://localhost:8000`
+    API_ENDPOINT: `https://immense-taiga-22987.herokuapp.com`
   };
   
   export default config;
