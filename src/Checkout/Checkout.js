@@ -9,14 +9,9 @@ class Checkout extends Component {
   static contextType = Context;
 
   render() {
-//    const error = (this.context.error && (this.context.error != "No patrons found") && (this.context.error != "No books found"))
-//          ? <div className="errorTop">{this.context.error}</div>
-//          : "";
-
     const selectBook = (this.context.currentPatron.length === 0)
          ? ""
          : <SelectBook />;
-
 
     return (
       <>

@@ -73,11 +73,6 @@ button {
     padding: 0 0 5px 0;
 }
 
-.errorTop, .noChecks {
-
-    
-}
-
 .errorTop {
     align-self: center;
     background-color: #5BC0EB;

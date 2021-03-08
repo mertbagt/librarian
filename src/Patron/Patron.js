@@ -10,10 +10,6 @@ class Patron extends Component {
   static contextType = Context;
 
   render() {
-//    const error = (this.context.error && (this.context.error != "No patrons found"))
-//          ? <div className="errorTop">{this.context.error}</div>
-//          : "";
-
     return (
       <>
         <Error />

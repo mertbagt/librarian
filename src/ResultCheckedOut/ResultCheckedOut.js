@@ -1,7 +1,6 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import config from '../config';
-import ValidationError from '../ValidationError/ValidationError';
 import './ResultCheckedOut.css';
 
 class ResultCheckedOut extends Component {
@@ -34,13 +33,6 @@ class ResultCheckedOut extends Component {
       this.context.updateError(error.message);
       console.error({ error })
     })
-
-//    const results = [];
-//    const newStatus = "Deleted book: " + this.props.title;
-
-//    this.context.deleteBook(id);
-//    this.context.updateBookResults(results);
-//    this.context.updateError(newStatus);
   }
 
   getTitle() {

@@ -1,7 +1,6 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import ResultPatron from '../ResultPatron/ResultPatron';
-import ValidationError from '../ValidationError/ValidationError';
 import './SelectPatron.css';
 
 class SelectPatron extends Component {
@@ -10,7 +9,6 @@ class SelectPatron extends Component {
   state = {
     first: {value: '', touched: false},
     last: {value: '', touched: false},
-//    results: [],
   };
 
   updateFirst(first) {
@@ -41,7 +39,6 @@ class SelectPatron extends Component {
     }
 
     this.context.updatePatronResults(results)
-//    this.setState({results: results})
 
     let newError = "";
 

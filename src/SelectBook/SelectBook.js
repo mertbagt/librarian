@@ -1,7 +1,6 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import ResultBook from '../ResultBook/ResultBook';
-import ValidationError from '../ValidationError/ValidationError';
 import './SelectBook.css';
 
 class SelectBook extends Component {
@@ -69,7 +68,6 @@ class SelectBook extends Component {
     }
 
     this.context.updateBookResults(results)
-//    this.setState({results: results})
 
     let newError = "";
 

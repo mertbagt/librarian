@@ -10,10 +10,6 @@ class Book extends Component {
   static contextType = Context;
 
   render() {
-//    const error = (this.context.error && (this.context.error != "No books found"))
-//          ? <div className="errorTop">{this.context.error}</div>
-//          : "";
-
     return (
       <>
         <Error />

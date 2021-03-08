@@ -1,7 +1,6 @@
 import  React, {Component} from 'react';
 import Context from '../Context';
 import ResultCheckedOut from '../ResultCheckedOut/ResultCheckedOut';
-import ValidationError from '../ValidationError/ValidationError';
 import './SelectCheckedOut.css';
 
 class SelectCheckedOut extends Component {

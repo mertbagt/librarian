@@ -10,107 +10,6 @@ import Context from '../Context';
 import config from '../config';
 import './App.css';
 
-
-/*
-const patrons = [
-  {
-    id: 0,
-    first: 'Joe',
-    last: 'Smith'
-  },
-  {
-    id: 1,
-    first: 'Bob',
-    last: 'Johnson'
-  },
-  {
-    id: 2,
-    first: 'John',
-    last: 'Baker'
-  },
-  {
-    id: 3,
-    first: 'John',
-    last: 'Barber'
-  }
-];
-
-const books = [
-  {
-    id: 0,
-    title: 'A Game of Thrones',
-    pageCount: 694,
-    genre: 'political fiction',
-    ISBN: '0-553-10354-7'
-  },
-  {
-    id: 1,
-    title: 'Being and Time',
-    pageCount: 589,
-    genre: 'philosophy',
-    ISBN: '0-631-19770-2'
-  },
-  {
-    id: 2,
-    title: 'The Life of Pi',
-    pageCount: 352,
-    genre: 'philosophical fiction',
-    ISBN: '0-676-97376-0'
-  },
-  {
-    id: 3,
-    title: 'And Then There Were None',
-    pageCount: 272,
-    genre: 'mystery',
-    ISBN: '9780312330873'
-  },
-  {
-    id: 4,
-    title: 'The Water Dancer',
-    pageCount: 407,
-    genre: 'historical fiction',
-    ISBN: '978-0-399-59059-7'
-  },
-  {
-    id: 5,
-    title: 'The Eyes of the Dragon',
-    pageCount: 326,
-    genre: 'fantasy',
-    ISBN: '978-0-670-81458-9'
-  },
-  {
-    id: 6,
-    title: 'Where the Crawdads Sing',
-    pageCount: 384,
-    genre: 'literary fiction',
-    ISBN: '9780735219113'
-  },
-  {
-    id: 7,
-    title: 'Mastering the Art of French Cooking',
-    pageCount: 726,
-    genre: 'culinary',
-    ISBN: '0-375-41340-5'
-  },
-  {
-    id: 8,
-    title: 'Notes of a Native Son',
-    pageCount: 192,
-    genre: 'essay',
-    ISBN: '9780807064313'
-  },
-  {
-    id: 9,
-    title: 'The City of God',
-    pageCount: 982,
-    genre: 'philosophy',
-    ISBN: '9780679600879'
-  }
-]
-
-const booksCheckedOut = []
-*/
-
 class App extends Component {
   state = {
     patrons: [],
@@ -151,11 +50,6 @@ class App extends Component {
   }
 
   handleAddPatron = (newPatron) => {
-/*
-    this.setState({
-      patrons: [...this.state.patrons, newPatron ],
-    })
-*/
     fetch(`${config.API_ENDPOINT}/patrons`)
       .then(res => {
         if(!res.ok) {
@@ -187,12 +81,6 @@ class App extends Component {
   }
 
   handleAddBook = (newBook) => {
-/*  
-    this.setState({
-      books: [...this.state.books, newBook ],
-    })
-*/
-
     fetch(`${config.API_ENDPOINT}/books`)
        .then(res => {
          if(!res.ok) {
@@ -229,11 +117,6 @@ class App extends Component {
   }
 
   handleCheckBookOut = (bookCheckedOut) => {
-/*
-    this.setState({
-      booksCheckedOut: [...this.state.booksCheckedOut, bookCheckedOut ],
-    })
-*/
     fetch(`${config.API_ENDPOINT}/checks`)
       .then(res => {
         if(!res.ok) {
@@ -251,13 +134,6 @@ class App extends Component {
   }
 
   handleCheckIn = (bookId) => {
-//    console.log(bookId);
-//    console.log(typeof(bookId))
-/*
-    this.setState({
-      booksCheckedOut: this.state.booksCheckedOut.filter(book => (book.bookId !== bookId))
-    })
-*/
     fetch(`${config.API_ENDPOINT}/checks`)
       .then(res => {
         if(!res.ok) {

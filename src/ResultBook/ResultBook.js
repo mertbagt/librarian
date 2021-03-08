@@ -41,7 +41,7 @@ class ResultBook extends Component {
 
     const patronId = this.context.currentPatron.patronId
     const bookId = this.props.id;
-    const newDbCheckedOut = {patron_id: patronId, book_id: bookId} // id is a placeholder needed by vercel to submit without error but not needed by db
+    const newDbCheckedOut = {patron_id: patronId, book_id: bookId}
     const bookCheckedOut = {patronId, bookId}
     const results = [];
     const newStatus = "Checked out book: " + this.props.title;
